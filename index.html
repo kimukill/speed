@@ -62,14 +62,14 @@
             document.querySelector(`#cir${i}`).style.backgroundColor = "red";
         }
         time = setInterval(() => {
-            b += 0.001;
-        }, 1);
+            b += 0.01;
+        }, 10);
     }
 
     function stop() {
         if (isStart) {
             clearInterval(time);
-            document.querySelector("body").innerHTML = `<p>${b.toFixed(3)}초</p><button id="btn" onclick="restart()">다시</button>`;
+            document.querySelector("body").innerHTML = `<p>${b.toFixed(2)}초</p><button id="btn" onclick="restart()">다시</button>`;
         } else {
             document.querySelector("body").innerHTML = `<p style="font-size: 200px; color: red;">출발 안했다</p>`;
         }
