@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPEED TEST</title>
+</head>
+<body>
+    <div style="display: flex;">
+        <div id="cir1" style="
+        width: 10vh;
+        height: 10vh;
+        background-color: red;
+        margin: 5%;
+        border-radius: 50%;">
+            <p>&nbsp;</p>
+        </div>
+        <div id="cir2"  style="
+        width: 10vh;
+        height: 10vh;
+        background-color: red;
+        margin: 5%;
+        border-radius: 50%;">
+            <p>&nbsp;</p>
+        </div>
+        <div id="cir3"  style="
+        width: 10vh;
+        height: 10vh;
+        background-color: red;
+        margin: 5%;
+        border-radius: 50%;">
+            <p>&nbsp;</p>
+        </div>
+    </div>
+    <button id="btn" onclick="stop()">스돕</button>
+</body>
+<script>
+    let a = 1;
+    let b = 0;
+    let time;
+    let green;
+    let isStart = false;
+
+    function greeninte() {
+        green = setInterval(change, 750);
+    }
+
+    greeninte();
+
+    function change() {
+        document.querySelector(`#cir${a}`).style.backgroundColor = "green";
+        a++;
+        if (a > 3) {
+            clearInterval(green);
+            setTimeout(start, Math.floor(Math.random() * (5000 - 200) + 200));
+        }
+    }
+
+    function start() {
+        isStart = true;
+        for (let i = 1; i < 4; i++) {
+            document.querySelector(`#cir${i}`).style.backgroundColor = "red";
+        }
+        time = setInterval(() => {
+            b += 0.01;
+        }, 10);
+    }
+
+    function stop() {
+        if (isStart) {
+            clearInterval(time);
+            document.querySelector("body").innerHTML = `<p>${b.toFixed(4)}초</p><button id="btn" onclick="restart()">다시</button>`;
+        } else {
+            document.querySelector("body").innerHTML = `<p style="font-size: 200px; color: red;">빙시야 출발 안했다</p>`;
+        }
+    }
+
+    function restart() {
+        document.querySelector("body").innerHTML = `
+            <div style="display: flex;">
+                <div id="cir1" style="width: 10vh; height: 10vh; background-color: red; margin: 5%; border-radius: 50%;"><p>&nbsp;</p></div>
+                <div id="cir2" style="width: 10vh; height: 10vh; background-color: red; margin: 5%; border-radius: 50%;"><p>&nbsp;</p></div>
+                <div id="cir3" style="width: 10vh; height: 10vh; background-color: red; margin: 5%; border-radius: 50%;"><p>&nbsp;</p></div>
+            </div>
+            <button id="btn" onclick="stop()">스돕</button>
+        `;
+        isStart = false;
+        a = 1;
+        b = 0;
+        greeninte();
+    }
+</script>
+</html>
