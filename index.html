@@ -32,7 +32,7 @@
             <p>&nbsp;</p>
         </div>
     </div>
-    <button id="btn" onclick="stop()">스돕</button>
+    <button id="btn" onclick="stop()">스톱</button>
 </body>
 <script>
     let a = 1;
@@ -71,7 +71,7 @@
             clearInterval(time);
             document.querySelector("body").innerHTML = `<p>${b.toFixed(2)}초</p><button id="btn" onclick="restart()">다시</button>`;
         } else {
-            document.querySelector("body").innerHTML = `<p style="font-size: 200px; color: red;"onclick="restart()">출발 안했다</p>`;
+            document.querySelector("body").innerHTML = `<p style="font-size: 200px; color: red;"onclick="restart()">false start</p>`;
         }
     }
 
